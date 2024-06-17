@@ -1,13 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-#contents {
+<Style>
+div {
+	
+}
+
+#container {
 	width: 1200px;
-	float: padding;
-	margin-bottom: 20px
+	padding: 20px;
+	margin: 0 auto;
+}
+
+#contents {
+	width: 0 auto;
+	float: left;
+	margin-bottom: 20px;
 }
 
 #left-sidebar {
@@ -22,11 +33,8 @@
 	float: right;
 	margin-bottom: 20px;
 }
+</Style>
 
-#footer {
-	clear: both;
-}
-</style>
 <meta charset="UTF-8">
 <title>bootstrap4</title>
 <link rel="stylesheet"
@@ -45,45 +53,47 @@
 <title>게시글</title>
 </head>
 <body>
-	<div id="contents" class="container">
-		<p>
-			<label class="reg" for="class">분류</label> <select>
-				<option>아기 자랑</option>
-				<option>거래 후기</option>
-			</select>
-		</p>
-		<p>
-			<label>제목</label> <input type="text" id="content" />
-		</p>
-		<div id="summernote"></div>
-		<script>
-			$('#summernote').summernote({
-				placeholder : 'Hello bootstrap 4',
-				tabsize : 2,
-				height : 300,
-				minHeight : 300,
-				maxHeight : 500,
-			});
-		</script>
-		<p>
-			<button type="submit">확인</button>
-			<button type="submit">취소</button>
-		</p>
-	</div>
+	<div id="container">
+		<div id="left-sidebar">
+			<div class="left-sidebar">
+				<button>전체보기</button>
+				<br>
+				<button>아기 자랑</button>
+				<br>
+				<button>거래 후기</button>
+			</div>
+		</div>
+		<div id="contents">
+			<p>
+				<label class="reg" for="class">분류</label> <select>
+					<option>아기 자랑</option>
+					<option>거래 후기</option>
+				</select>
+			</p>
+			<p>
+				<label>제목</label> <input type="text" id="content" />
+			</p>
+			<div id="summernote"></div>
+			<script>
+				$('#summernote').summernote({
+					placeholder : 'Hello bootstrap 4',
+					tabsize : 2,
+					height : 300,
+					minHeight : 300,
+					maxHeight : 500,
+				});
+			</script>
+			<p>
+				<button type="submit">확인</button>
+				<button type="submit">취소</button>
+			</p>
+		</div>
 
-	<div id="left-sidebar">
-		<div class="left-sidebar">
-			<button>전체보기</button>
-			<br>
-			<button>아기 자랑</button>
-			<br>
-			<button>거래 후기</button>
+
+		<div id="right-sidebar">
+			<img alt="아기1" src="../img/333.jpg" width="100" height="100">
 		</div>
 	</div>
-	<div id="right-sidebar">
-	<img alt="아기1" src="../img/333.jpg" width= "100" height="100">
-	</div>
-
 
 
 </body>

@@ -1,29 +1,35 @@
 package project2;
 
 public class BoardDTO {
-	private String id;
-	private String name;
-	private String title;
-	private String content;
-	private java.sql.Date postdate; //등록 날짜
-	private String ofile; //원본 파일명
-	private String sfile; // 저장된 파일명
-	private String cate; //카테고리
-	private int upcount; //추천수
-	private int visitcount; //조회수
+	private	int id; //글번호
+	private int bno; //카테고리번호
+	private String writerId; // 작성자
+	private String title; 
+	private String detail;
+	private java.sql.Date createDate; //등록 날짜
+	private java.sql.Date updateDate; //수정 날짜
+	private int likes;//추천수
+	private int views; //조회수
 	private String pass; // 게시글 비밀번호 4자리
 	
-	public String getId() {
+	
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public int getBno() {
+		return bno;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setBno(int bno) {
+		this.bno = bno;
+	}
+	public String getWriterId() {
+		return writerId;
+	}
+	public void setWriterId(String writerId) {
+		this.writerId = writerId;
 	}
 	public String getTitle() {
 		return title;
@@ -31,47 +37,35 @@ public class BoardDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getContent() {
-		return content;
+	public String getDetail() {
+		return detail;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setDetail(String detail) {
+		this.detail = detail;
 	}
-	public java.sql.Date getPostdate() {
-		return postdate;
+	public java.sql.Date getCreateDate() {
+		return createDate;
 	}
-	public void setPostdate(java.sql.Date postdate) {
-		this.postdate = postdate;
+	public void setCreateDate(java.sql.Date createDate) {
+		this.createDate = createDate;
 	}
-	public String getOfile() {
-		return ofile;
+	public java.sql.Date getUpdateDate() {
+		return updateDate;
 	}
-	public void setOfile(String ofile) {
-		this.ofile = ofile;
+	public void setUpdateDate(java.sql.Date updateDate) {
+		this.updateDate = updateDate;
 	}
-	public String getSfile() {
-		return sfile;
+	public int getLikes() {
+		return likes;
 	}
-	public void setSfile(String sfile) {
-		this.sfile = sfile;
+	public void setLikes(int likes) {
+		this.likes = likes;
 	}
-	public String getCate() {
-		return cate;
+	public int getViews() {
+		return views;
 	}
-	public void setCate(String cate) {
-		this.cate = cate;
-	}
-	public int getUpcount() {
-		return upcount;
-	}
-	public void setUpcount(int upcount) {
-		this.upcount = upcount;
-	}
-	public int getVisitcount() {
-		return visitcount;
-	}
-	public void setVisitcount(int visitcount) {
-		this.visitcount = visitcount;
+	public void setViews(int views) {
+		this.views = views;
 	}
 	public String getPass() {
 		return pass;
@@ -80,4 +74,6 @@ public class BoardDTO {
 		this.pass = pass;
 	}
 	
-}
+	
+	
+	}
