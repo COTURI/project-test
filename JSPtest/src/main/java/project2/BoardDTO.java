@@ -3,11 +3,12 @@ package project2;
 public class BoardDTO {
 	private	int id; //글번호
 	private int bno; //카테고리번호
-	private String writerId; // 작성자
+	private int writerId; // 작성자
 	private String title; 
 	private String detail;
 	private java.sql.Date createDate; //등록 날짜
 	private java.sql.Date updateDate; //수정 날짜
+	
 	private int likes;//추천수
 	private int views; //조회수
 	private String pass; // 게시글 비밀번호 4자리
@@ -25,10 +26,10 @@ public class BoardDTO {
 	public void setBno(int bno) {
 		this.bno = bno;
 	}
-	public String getWriterId() {
+	public int getWriterId() {
 		return writerId;
 	}
-	public void setWriterId(String writerId) {
+	public void setWriterId(int writerId) {
 		this.writerId = writerId;
 	}
 	public String getTitle() {

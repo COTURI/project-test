@@ -37,7 +37,7 @@ public class BoardDAO extends DBConnPool {
 	public List<BoardDTO> selectListPage(Map<String, Object> map) {
 		List<BoardDTO> board = new Vector<BoardDTO>();
 
-		String query = "" + " SELECT * FROM ( " + " SELECT Tb.*, ROWNUM rNum FROM ( " + " SELECT * FROM mvcboard ";
+		String query = "" + " SELECT * FROM ( " + " SELECT Tb.*, ROWNUM rNum FROM ( " + " SELECT * FROM boards ";
 
 		if (map.get("searchWord") != null) {
 			query += " WHERE " + map.get("searchField") + " LIKE '%" + map.get("searchWord") + "%' ";
@@ -53,8 +53,13 @@ public class BoardDAO extends DBConnPool {
 
 			while (rs.next()) {
 				BoardDTO dto = new BoardDTO();
-
-			
+				dto.setId(rs.getInt(1));
+				dto.setBno(rs.getInt(2));
+				dto.setWriterId(rs.getInt(3));
+				dto.setTitle(rs.getString(4));
+				dto.setDetail(rs.getString(5));
+				dto.setCreateDate(rs.getDate(6));
+				dto.setUpdateDate(rs.getDate(6));
 				board.add(dto);
 			}
 		} catch (Exception e) {
