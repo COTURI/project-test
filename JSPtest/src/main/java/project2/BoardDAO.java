@@ -33,7 +33,6 @@ public class BoardDAO extends DBConnPool {
 		return totalCount;
 	}
 	
-	
 	public List<BoardDTO> selectListPage(Map<String, Object> map) {
 		List<BoardDTO> board = new Vector<BoardDTO>();
 
@@ -60,6 +59,8 @@ public class BoardDAO extends DBConnPool {
 				dto.setDetail(rs.getString(5));
 				dto.setCreateDate(rs.getDate(6));
 				dto.setUpdateDate(rs.getDate(6));
+				dto.setLikes(rs.getInt(8));
+				dto.setViews(rs.getInt(9));
 				board.add(dto);
 			}
 		} catch (Exception e) {
@@ -74,8 +75,8 @@ public class BoardDAO extends DBConnPool {
 		int result = 0;
 
 		try {
-			String query = "INSERT INTO mvcboard ( " + " idx, name, title, content, ofile, sfile, pass) " + " VALUES( "
-					+ " seq_board_num.NEXTVAL,?,?,?,?,?,?)";
+			String query = "INSERT INTO board ( " + " id,bno,writerId,title,detail,createDate,updateDate,imgUrl_1,imgUrl_2,imgUrl_3,imgUrl_4) " + " VALUES( "
+					+ " seq_board_num.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?)";
 
 			psmt = con.prepareStatement(query);
 			
@@ -88,12 +89,12 @@ public class BoardDAO extends DBConnPool {
 		return result;
 	}
 
-	public BoardDTO selectView(String idx) {
+	public BoardDTO selectView(int id) {
 		BoardDTO dto = new BoardDTO();
-		String query = "SELECT * FROM mvcboard WHERE idx=?";
+		String query = "SELECT * FROM board WHERE id=?";
 		try {
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, idx);
+			psmt.setInt(1, id);
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
@@ -108,11 +109,11 @@ public class BoardDAO extends DBConnPool {
 		return dto;
 	}
 
-	public void updateVisitCount(String idx) {
-		String query = "UPDATE mvcboard SET " + " visitcount=visitcount+1 " + " WHERE idx=?";
+	public void updateVisitCount(int id) {
+		String query = "UPDATE mvcboard SET " + " visitcount=visitcount+1 " + " WHERE id=?";
 		try {
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, idx);
+			psmt.setInt(1, id);
 			psmt.executeQuery();
 		} catch (Exception e) {
 			System.out.println("게시물 조회수 증가 중 예외 발생");
@@ -120,23 +121,23 @@ public class BoardDAO extends DBConnPool {
 		}
 	}
 
-	public void downCountPlus(String idx) {
+	public void downCountPlus(int id) {
 		String sql = "UPDATE mvcboard SET " + " downcount=downcount+1 " + " WHERE idx=? ";
 		try {
 			psmt = con.prepareStatement(sql);
-			psmt.setString(1, idx);
+			psmt.setInt(1, id);
 			psmt.executeUpdate();
 		} catch (Exception e) {
 		}
 	}
 	
-	public boolean confirmPassword(String pass, String idx) {
+	public boolean confirmPassword(String pass, int id) {
 		boolean isCorr = true;
 		try {
-			String sql = "SELECT COUNT(*) FROM mvcboard WHERE pass=? AND idx=?";
+			String sql = "SELECT COUNT(*) FROM mvcboard WHERE pass=? AND id=?";
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, pass);
-			psmt.setString(2, idx);
+			psmt.setInt(2, id);
 			rs=psmt.executeQuery();
 			rs.next();
 			if(rs.getInt(1)==0) {
@@ -149,12 +150,12 @@ public class BoardDAO extends DBConnPool {
 		}
 		return isCorr;
 	}
-	public int deletePost(String idx) {
+	public int deletePost(int id) {
 		int result=0;
 		try {
-			String query = "DELETE FROM mvcboard WHERE idx=?";
+			String query = "DELETE FROM mvcboard WHERE id=?";
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, idx);
+			psmt.setInt(1, id);
 			result = psmt.executeUpdate();
 		}
 		catch(Exception e) {
@@ -182,6 +183,4 @@ public class BoardDAO extends DBConnPool {
 		}
 		return result;
 	}
-
-
 }
