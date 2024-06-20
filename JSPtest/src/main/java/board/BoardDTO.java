@@ -1,4 +1,4 @@
-package project2;
+package board;
 
 public class BoardDTO {
 	private int id; // 글번호

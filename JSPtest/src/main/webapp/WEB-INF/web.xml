@@ -9,4 +9,15 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-</web-app>
+  
+  
+  <servlet>
+  <servlet-name>BoardList</servlet-name>
+  <servlet-class>board.ListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>BoardList</servlet-name>
+  <url-pattern>/board/list.do</url-pattern>
+  </servlet-mapping>
+  
+  </web-app>

@@ -1,11 +1,11 @@
-package project2;
+package board;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import board.BoardDTO;
 import common.DBConnPool;
-import project2.BoardDTO;
 
 public class BoardDAO extends DBConnPool {
 	public BoardDAO() {
