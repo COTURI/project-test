@@ -10,7 +10,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import board.BoardPage;
 
 public class ListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -54,6 +53,6 @@ public class ListController extends HttpServlet {
 
 		req.setAttribute("boardLists", boardLists);
 		req.setAttribute("map", map);
-		req.getRequestDispatcher("../Boards/list.do").forward(req, resp);
+		req.getRequestDispatcher("/boards/list.do").forward(req, resp);
 	}
 }

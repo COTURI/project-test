@@ -32,6 +32,8 @@ public class BoardDAO extends DBConnPool {
 		return totalCount;
 	}
 	
+	
+	
 	public List<BoardDTO> selectListPage(Map<String, Object> map) {
 	    List<BoardDTO> board = new Vector<BoardDTO>();
 
@@ -58,7 +60,7 @@ public class BoardDAO extends DBConnPool {
 	            BoardDTO dto = new BoardDTO();
 	            dto.setId(rs.getInt("id"));
 	            dto.setBno(rs.getInt("bno"));
-	            dto.setWriterId(rs.getString("writerId"));
+	            dto.setWriterId(rs.getInt("writerId"));
 	            dto.setTitle(rs.getString("title"));
 	            dto.setDetail(rs.getString("detail"));
 	            dto.setCreateDate(rs.getDate("createDate"));
